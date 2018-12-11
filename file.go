@@ -1,7 +1,6 @@
 package fileapi
 
 import (
-	"io"
 	"net/url"
 	"os"
 	"strconv"
@@ -10,7 +9,7 @@ import (
 type File struct {
 }
 
-func (f *File) Open(path *url.URL) (io.ReadWriteCloser, error) {
+func (f *File) Open(path *url.URL) (FileInterface, error) {
 	settings := path.Query()
 	tmp := settings.Get("flag")
 	if tmp == "" {
